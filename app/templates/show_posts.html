@@ -4,9 +4,18 @@
   {% for post in posts %}
 <div class="post post-{{ loop.index % 3 }}">
   <div class="post-inner">
+      {% if post.service == 'instagram' %}
+    <a class="iframe" href="{{ post.orig_url| https }}embed/"> 
+    {% endif %}
     <div class="post-image">
-      <a rel="gallery" href="javascript:$.fancybox({'content' : $('#fancy-' + {{ post.id }}).html()})"><img src="{{ post.image_small|https }}" width="256" /></a>
+      {% if post.image_small %}
+        <img src="{{ post.image_small|https }}" width="256" />
+      {% endif %}
+      </a>
     </div>
+    {% if post.service == 'instagram' %}
+    </a>
+    {% endif %}
     <div class="post-content">
       <div class="post-header clearfix">
 <div class="post-icon">
@@ -22,10 +31,12 @@
 <div class="post-text">{{ post.text|urlize(40, true) }}</div>
   
     </div>
-    <div style="display:none" id="fancy-{{ post.id }}">
-      {% if post.service == 'instagram' %}
-      <iframe src="{{ post.orig_url|https }}embed/" width="612" height="710" frameborder="0" scrolling="no" allowtransparency="true"></iframe> 
+
+          {% if post.service == 'instagram' %}
+    <a class="iframe " href="{{ post.orig_url| https }}embed/">  </a> 
       {% endif %}
+    <div class="pic-box" style="display:none" id="fancy-{{ post.id }}">
+
       {% if post.service == 'twitter' and post.image_small %}
       <!-- <iframe src="/showtweet/{{ post.orig_post_id }}" width="390" height="380" frameborder="0" scrolling="no" allowtransparency="true"></iframe> -->
       {% endif %}
