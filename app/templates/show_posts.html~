@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div id="posts">
+  {% for post in posts %}
+<div class="post post-{{ loop.index % 3 }}">
+  <div class="post-inner">
+    <div class="post-image">
+      <a rel="gallery" href="javascript:$.fancybox({'content' : $('#fancy-' + {{ post.id }}).html()})"><img src="{{ post.image_small|https }}" width="256" /></a>
+    </div>
+    <div class="post-content">
+      <div class="post-header clearfix">
+<div class="post-icon">
+        {% if post.service == 'twitter' %}
+      <i class="fa fa-twitter-square fa-3x"></i>
+  {% endif %}
+        {% if post.service == 'instagram' %}
+      <i class="fa fa-instagram fa-3x"></i>
+{% endif %}
+</div>
+<div class="post-title"><p class="post-text-username">@{{ post.username }}</p> <p class="post-text-date">{{ post.date|dateformat }}</p> </div>
+</div>
+<div class="post-text">{{ post.text|urlize(40, true) }}</div>
+  
+    </div>
+    <div style="display:none" id="fancy-{{ post.id }}">
+      {% if post.service == 'instagram' %}
+      <iframe src="{{ post.orig_url|https }}embed/" width="612" height="710" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+      {% endif %}
+      {% if post.service == 'twitter' and post.image_small %}
+      <iframe src="/showtweet/{{ post.orig_post_id }}" width="390" height="380" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+      {% endif %}
+    </div>
+  </div>
+</div>
+  {% endfor %}
+  </div>
+<div class="clearfix">
+{% if page > 1 %}
+  <a class="prev" href="?page={{ page - 1 }}">Forrige</a>
+{% endif %}
+{% if page < pages %}
+  <a class="next" href="?page={{ page + 1 }}">Naeste</a>
+{% endif %}
+</div>
+{% endblock %}

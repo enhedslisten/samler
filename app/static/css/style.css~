@@ -1,0 +1,72 @@
+@font-face {
+	font-family: 'Soho Gothic';
+	src: url('../fonts/SohoGothicStd-Medium.otf');
+}
+
+@font-face {
+	font-family: 'Soho Gothic Italic';
+	src: url('../fonts/SohoStdItalic.otf');
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+body            { 
+font-family: 'Soho Gothic', Verdana, Helvetica, Arial, sans-serif; 
+font-size: 13px;
+background: #f4f0e4;
+width: 810px;
+}
+
+a, h1, h2       { 
+color: #000; 
+}
+
+h1, h2          { 
+font-family: 'Soho Gothic', "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; 
+}
+
+h2              { 
+font-size: 1.2em; 
+}
+
+.post {width:256px; border: 1px solid #d0cdc1;margin: 0 0 15px 0}
+.post-inner{ }
+.post-image, a .post-image{}
+
+.post-content {
+    margin-top:-4px;
+    padding:7px;
+    color: white;
+    background-color: #e13531;
+}
+.post-text {font-size:11pt;font-family: 'Soho Gothic Italic', "Helvetica Neue", Helvetica, Arial, sans-serif;width:242px; margin: 10px 0 0 0}
+.post-text-username { font-size:15px;margin-left:4px;}
+.post-text-date {font-size:9pt;font-family: 'Soho Gothic Italic', "Helvetica Neue", Helvetica, Arial, sans-serif;margin-left:5px}
+.post-icon {float:left; width:42px;}
+.post-title{float:left;width:200px;}
+.post-title p {margin:0}
+
+#header {width:auto; margin: 0 0 30px 0;}
+#logo{float:left; margin: 15px 0 0 20px}
+#CTA-hashtag{float:left;font-size:18pt;margin: 25px 0 0 10px;}
+#CTA{float:right; width: 330px;}
+#CTA i {color:#e13531}
+#CTA-text {float:left;width:300px;margin-top:20px}
+#CTA-icons {float:right;margin: 33px 0 0 0 }
+#CTA-icons p {margin: 0;}
+#CTA p {font-size:13pt;font-family: 'Soho Gothic Italic', "Helvetica Neue", Helvetica, Arial, sans-serif;}
+img {height:auto}
+
+h1 {color:#2e2e2e}

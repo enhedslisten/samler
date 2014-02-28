@@ -1,0 +1,89 @@
+2013-10-08 22:31:53,148 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-10-08 22:31:53,707 - INFO: yay, 200 response
+2013-10-27 12:46:14,404 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-10-27 12:46:15,028 - INFO: yay, 200 response
+2013-10-27 17:09:44,840 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-10-27 17:09:47,156 - INFO: yay, 200 response
+2013-10-27 17:09:50,749 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-10-27 17:10:04,156 - INFO: yay, 200 response
+2013-10-27 17:14:40,504 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-10-27 17:14:43,065 - INFO: yay, 200 response
+2013-10-27 17:15:02,816 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-10-27 17:15:04,408 - INFO: yay, 200 response
+2013-10-27 17:15:38,112 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-10-27 17:15:39,019 - INFO: yay, 200 response
+2013-10-27 17:17:00,692 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-10-27 17:17:06,471 - INFO: yay, 200 response
+2013-10-27 17:18:37,120 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-10-27 17:18:39,855 - INFO: yay, 200 response
+2013-10-27 21:44:11,003 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-10-27 21:44:15,494 - INFO: yay, 200 response
+2013-10-27 22:27:40,431 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-10-27 22:27:41,035 - INFO: yay, 200 response
+2013-11-01 05:54:33,665 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-01 05:54:34,303 - INFO: yay, 200 response
+2013-11-01 05:54:40,081 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-01 05:54:40,812 - INFO: yay, 200 response
+2013-11-01 15:17:43,360 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-01 15:17:44,227 - INFO: yay, 200 response
+2013-11-01 15:17:45,808 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-01 15:17:46,386 - INFO: yay, 200 response
+2013-11-02 18:29:23,684 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-02 18:29:24,701 - INFO: yay, 200 response
+2013-11-02 18:29:28,784 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-02 18:29:29,317 - INFO: yay, 200 response
+2013-11-05 08:22:22,129 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-05 08:22:22,638 - INFO: yay, 200 response
+2013-11-05 08:22:24,539 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-05 08:22:25,295 - INFO: yay, 200 response
+2013-11-06 18:23:55,715 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-06 18:23:56,306 - WARNING: 503 - <html><body><h1>503 Service Unavailable</h1>
+No server is available to handle this request.
+</body></html>
+
+2013-11-06 18:23:56,308 - INFO: Saved 0 media
+2013-11-06 18:23:57,821 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-06 18:23:58,299 - INFO: yay, 200 response
+2013-11-06 22:08:04,770 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-06 22:08:05,338 - INFO: yay, 200 response
+2013-11-06 22:08:06,957 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-06 22:08:07,625 - INFO: yay, 200 response
+2013-11-07 12:47:00,994 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-07 12:47:01,738 - INFO: yay, 200 response
+2013-11-07 12:47:03,539 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-07 12:47:04,028 - INFO: yay, 200 response
+2013-11-11 19:58:32,385 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-11 19:58:32,994 - INFO: yay, 200 response
+2013-11-11 19:58:35,235 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-11 19:58:36,372 - INFO: yay, 200 response
+2013-11-13 06:40:47,814 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-13 06:40:48,338 - INFO: yay, 200 response
+2013-11-13 06:40:50,157 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-13 06:40:50,740 - INFO: yay, 200 response
+2013-11-14 12:52:55,894 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-14 12:52:56,435 - INFO: yay, 200 response
+2013-11-14 12:52:57,685 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-14 12:52:58,185 - INFO: yay, 200 response
+2013-11-16 21:00:30,716 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-16 21:00:31,380 - INFO: yay, 200 response
+2013-11-16 21:00:34,318 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-16 21:00:34,912 - INFO: yay, 200 response
+2013-11-18 18:19:38,838 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-18 18:19:39,595 - INFO: yay, 200 response
+2013-11-18 18:19:40,924 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-18 18:19:41,908 - INFO: yay, 200 response
+2013-11-19 07:17:33,577 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-19 07:17:34,025 - INFO: yay, 200 response
+2013-11-19 07:17:34,236 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-19 07:17:34,688 - INFO: yay, 200 response
+2013-11-19 07:17:52,556 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-19 07:17:53,006 - INFO: yay, 200 response
+2013-11-19 07:17:53,221 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-19 07:17:53,766 - INFO: yay, 200 response
+2013-11-25 10:18:38,773 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2013-11-25 10:18:39,248 - INFO: yay, 200 response
+2013-11-25 10:18:39,735 - INFO: Starting new HTTPS connection (1): api.twitter.com
+2013-11-25 10:18:40,238 - INFO: yay, 200 response
+2014-02-28 21:37:51,934 - INFO: Starting new HTTPS connection (1): api.instagram.com
+2014-02-28 21:37:52,799 - WARNING: 400 - {"meta":{"error_type":"OAuthClientException","code":400,"error_message":"The client used for authentication is no longer active."}}
+2014-02-28 21:37:52,803 - INFO: Saved 0 media
