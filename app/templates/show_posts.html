@@ -2,10 +2,11 @@
 {% block body %}
   <div id="posts">
   {% for post in posts %}
-<div class="post post-{{ loop.index % 3 }}">
+  <div class="post post-{{ loop.index % 3 }}">
   <div class="post-inner">
-      {% if post.service == 'instagram' %}
-    <a class="iframe" href="{{ post.orig_url| https }}embed/"> 
+    <!--  Instagram's going to have a link around it to enable a popup-->
+    {% if post.service == 'instagram' %}
+      <a class="iframe" href="{{ post.orig_url| https }}embed/"> 
     {% endif %}
     <div class="post-image">
       {% if post.image_small %}
@@ -18,23 +19,23 @@
     {% endif %}
     <div class="post-content">
       <div class="post-header clearfix">
-<div class="post-icon">
-        {% if post.service == 'twitter' %}
-      <i class="fa fa-twitter-square fa-3x"></i>
-  {% endif %}
-        {% if post.service == 'instagram' %}
-      <i class="fa fa-instagram fa-3x"></i>
-{% endif %}
-</div>
-<div class="post-title"><p class="post-text-username">@{{ post.username }}</p> <p class="post-text-date">{{ post.date|dateformat }}</p> </div>
-</div>
-<div class="post-text">{{ post.text|urlize(40, true) }}</div>
-  
+        <div class="post-icon">
+          <i class="fa fa-{{post.service}} fa-3x"></i>
+        </div>
+        <div class="post-title">
+          <p class="post-text-username">@{{ post.username }}</p> 
+          <p class="post-text-date">{{ post.date|dateformat }}</p> 
+        </div>
+      </div>
+      <div class="post-text">
+        {{ post.text|urlize(40, true) }}
+      </div>
     </div>
-
-          {% if post.service == 'instagram' %}
-    <a class="iframe " href="{{ post.orig_url| https }}embed/">  </a> 
-      {% endif %}
+    {% if post.orig_url %}      
+    <a class="iframe " href="{{ post.orig_url| https }}embed/">  
+    </a> 
+    {% endif %}
+    
     <div class="pic-box" style="display:none" id="fancy-{{ post.id }}">
 
       {% if post.service == 'twitter' and post.image_small %}
