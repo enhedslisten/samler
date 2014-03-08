@@ -4,17 +4,28 @@
   {% for post in posts %}
   <div class="post post-{{ loop.index % 3 }}">
   <div class="post-inner">
-    <!--  Instagram's going to have a link around it to enable a popup-->
+    <!--
+      If it's an instagram post or a twitter post with picture, 
+      create a fancybox iframe handler (picked up via JS) 
+      and wrap a link to such around image.
+    -->
     {% if post.service == 'instagram' %}
-      <a class="iframe" href="{{ post.orig_url| https }}embed/"> 
+      {% set iframeUrl = post.orig_url| https  ~ '/embed/' %}
+    {% elif post.service == 'twitter' and post.image_small %}
+      {% set iframeUrl = '/showtweet/' ~ post.orig_post_id %}
     {% endif %}
+
+    {% if iframeUrl %}
+      <a class="iframe" href="{{ iframeUrl }}">
+    {% endif %}
+
     <div class="post-image">
       {% if post.image_small %}
         <img src="{{ post.image_small|https }}" width="256" />
       {% endif %}
       </a>
     </div>
-    {% if post.service == 'instagram' %}
+    {% if iframeUrl %}
     </a>
     {% endif %}
     <div class="post-content">
@@ -30,18 +41,8 @@
       <div class="post-text">
         {{ post.text|urlize(40, true) }}
       </div>
-    </div>
-    {% if post.orig_url %}      
-    <a class="iframe " href="{{ post.orig_url| https }}embed/">  
-    </a> 
-    {% endif %}
-    
-    <div class="pic-box" style="display:none" id="fancy-{{ post.id }}">
+    </div>   
 
-      {% if post.service == 'twitter' and post.image_small %}
-      <!-- <iframe src="/showtweet/{{ post.orig_post_id }}" width="390" height="380" frameborder="0" scrolling="no" allowtransparency="true"></iframe> -->
-      {% endif %}
-    </div>
   </div>
 </div>
   {% endfor %}
