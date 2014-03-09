@@ -15,18 +15,12 @@
       {% set iframeUrl = '/showtweet/' ~ post.orig_post_id %}
     {% endif %}
 
-    {% if iframeUrl %}
-      <a class="iframe" href="{{ iframeUrl }}">
-    {% endif %}
-
-    <div class="post-image">
-      {% if post.image_small %}
-        <img src="{{ post.image_small|https }}" width="256" />
-      {% endif %}
+    {% if iframeUrl and post.image_small %}
+      <a class="iframe {{ post.service }}" href="{{ iframeUrl }}">
+        <div class="post-image">
+            <img src="{{ post.image_small|https }}" width="256" />
+        </div>
       </a>
-    </div>
-    {% if iframeUrl %}
-    </a>
     {% endif %}
     <div class="post-content">
       <div class="post-header clearfix">

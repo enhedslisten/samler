@@ -24,16 +24,6 @@ def object_list(template_name, qr, var_name='object_list', **kwargs):
     kwargs[var_name] = qr.paginate(kwargs['page'], 30)
     return render_template(template_name, **kwargs)
 
-
-#@app.route('/')
-#def show_posts():
-#    posts = Post.select().order_by(Post.date.desc())
-#    for post in posts:
-#        post.date = datetime.datetime.fromtimestamp(post.date)
-#
-#    return render_template('show_posts.html', posts=posts)
-
-
 @app.route('/')
 def show_posts_beta():
     posts = Post.select().order_by(Post.date.desc())

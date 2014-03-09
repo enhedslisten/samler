@@ -4,9 +4,9 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
+  <title>Rødt KBH</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
 
@@ -47,41 +47,6 @@
 	{% block body %} {% endblock %}
 
   </div>
-
-  <script>
-  $(document).ready(function() {
-
-
-    var container = document.querySelector('#posts');
-    var msnry;
-    // initialize Masonry after all images have loaded
-    imagesLoaded( container, function() {
-      msnry = new Masonry( container,  {
-        // options
-        columnWidth: 260,
-        gutter: 15,
-        itemSelector: '.post'
-      } );
-    });
-    
-    /* Using custom settings */
-    
-    $("a.inline").fancybox({
-      'hideOnContentClick': true
-    });
-
-    /* Apply fancybox to multiple items */
-    
-    $("a.group").fancybox({
-      'transitionIn'	:	'elastic',
-      'transitionOut'	:	'elastic',
-      'speedIn'		:	600, 
-      'speedOut'		:	200, 
-      'overlayShow'	:	false
-    });
-    
-  });
-  </script>
 
 </body>
 </html>
