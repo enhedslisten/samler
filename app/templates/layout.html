@@ -4,8 +4,8 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <title>Rødt KBH</title>
   <meta charset="utf-8">
+  <title>{{ app_name }}</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
@@ -28,12 +28,12 @@
       <div id="logo"><img src="{{ url_for('static', filename='img/logo.png') }}" width="60" />
       </div>
       <div id="CTA-hashtag">
-        <h1>RødtKbh</h1>
+        <h1>{{ app_name }}</h1>
       </div>
 
       <div id="CTA">
         <div id="CTA-text">
-	  <p> Hashtag og del dit billede af et #RødtKbh, så deltager du i konkurrencen om 5 biografbilletter. </p>
+	  <p> {{ subtitle }} </p>
         </div>
 	<div id="CTA-icons">
 	  <p><a target="_blank" href="http://twitter.com"><i class="fa fa-instagram fa-2x"></i></a></p>

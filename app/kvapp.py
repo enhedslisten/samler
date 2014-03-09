@@ -58,6 +58,12 @@ def datetimeformat(value, format='%d-%m-%Y %H:%M'):
 def httpsfilter(value):
     return value.replace('http://', 'https://')
 
+#inject our template vars, making sure to encode as unicode
+@app.context_processor
+def inject_strings():
+	name = u"Rødt KBH"
+	subtitle = u"Hashtag og del dit billede af et #RødtKbh, så deltager du i konkurrencen om 5 biografbilletter." 
+	return dict(app_name = name, subtitle = subtitle)
 
 if __name__ == '__main__':
 #    init_db()
