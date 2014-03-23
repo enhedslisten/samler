@@ -2,7 +2,7 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, make_response
 from models import Posts as Post
-import requests, json, datetime
+import requests, json, datetime, ConfigParser
 
 # create our little application :)
 app = Flask(__name__)
@@ -24,13 +24,31 @@ def object_list(template_name, qr, var_name='object_list', **kwargs):
     kwargs[var_name] = qr.paginate(kwargs['page'], 30)
     return render_template(template_name, **kwargs)
 
+def confirm_password(username, password):
+    Config = ConfigParser.ConfigParser()
+    Config.read('config.ini')
+    try:
+        password_in_file = Config.get('Users', username)
+        return password == password_in_file
+    except:
+        return False
+
 @app.route('/')
 def show_posts_beta():
     posts = Post.select().order_by(Post.date.desc())
 
     return object_list('show_posts.html', posts, 'posts')
 
+@app.route('/login/', methods=['GET', 'POST'])
+def login():
+    return render_template('login.html')
 
+@app.route('/authenticate', methods=['POST'])
+def authenticate():
+    if (confirm_password(request.form['username'], request.form['password'])):
+        return redirect(url_for('show_posts_beta'))
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/showtweet/<id>')
 def showtweet(id):
