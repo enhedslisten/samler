@@ -1,0 +1,5 @@
+[Users]
+username: userpassword
+
+[Secrets]
+secret_key: yourverysecretpassword

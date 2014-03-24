@@ -2,15 +2,18 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, make_response
 from models import Posts as Post
-import requests, json, datetime, ConfigParser
+import requests, json, datetime, ConfigParser, time
 
 # create our little application :)
 app = Flask(__name__)
 
 # Load default config and override config from an environment variable
+Config = ConfigParser.ConfigParser()
+Config.read('config.ini')
+    
 app.config.update(dict(
     DEBUG=True,
-    SECRET_KEY='',
+    SECRET_KEY=Config.get('Secrets', 'secret_key'),
     USERNAME='',
     PASSWORD=''
 ))
@@ -25,8 +28,6 @@ def object_list(template_name, qr, var_name='object_list', **kwargs):
     return render_template(template_name, **kwargs)
 
 def confirm_password(username, password):
-    Config = ConfigParser.ConfigParser()
-    Config.read('config.ini')
     try:
         password_in_file = Config.get('Users', username)
         return password == password_in_file
@@ -36,18 +37,20 @@ def confirm_password(username, password):
 @app.route('/')
 def show_posts_beta():
     posts = Post.select().order_by(Post.date.desc())
+    return object_list('show_posts.html', posts, 'posts', is_admin=('username' in session))
 
-    return object_list('show_posts.html', posts, 'posts')
-
-@app.route('/login/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
 
 @app.route('/authenticate', methods=['POST'])
 def authenticate():
     if (confirm_password(request.form['username'], request.form['password'])):
+        session['username'] = request.form['username']
         return redirect(url_for('show_posts_beta'))
     else:
+        time.sleep(2)
+        flash('Incorrect username or password.', 'error')
         return redirect(url_for('login'))
 
 @app.route('/showtweet/<id>')
