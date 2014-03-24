@@ -15,6 +15,10 @@
       {% set iframeUrl = '/showtweet/' ~ post.orig_post_id %}
     {% endif %}
 
+    
+    {% if is_admin %}
+      <a href="{{ url_for('hide', id=post.id) }}">Hide post</a>
+    {% endif %}
     {% if iframeUrl and post.image_small %}
       <a class="iframe {{ post.service }}" href="{{ iframeUrl }}">
         <div class="post-image">

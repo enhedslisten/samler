@@ -58,6 +58,11 @@ def authenticate():
         flash('Incorrect username or password.', 'error')
         return redirect(url_for('login'))
 
+@app.route('/hide/<id>')
+def hide(id):
+    app.logger.debug("getting to hide post id is %s" % id)
+    return redirect(url_for('show_posts_beta'))
+
 @app.route('/showtweet/<id>')
 def showtweet(id):
     resp = requests.get("https://api.twitter.com/1/statuses/oembed.json?id={0}&align=center".format(id))
