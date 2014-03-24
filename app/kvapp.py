@@ -43,6 +43,11 @@ def show_posts_beta():
 def login():
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('show_posts_beta'))
+
 @app.route('/authenticate', methods=['POST'])
 def authenticate():
     if (confirm_password(request.form['username'], request.form['password'])):
