@@ -32,4 +32,8 @@ $(document).ready(function() {
 		'height' : 1200
 	});
 
+	$('a.hidePost').click(function(){
+		return confirm("Er du sikker du vil skjule denne post?");
+	});
+
 });

@@ -36,7 +36,8 @@ def confirm_password(username, password):
 
 @app.route('/')
 def show_posts_beta():
-    posts = Post.select().order_by(Post.date.desc())
+    posts = Post.select().where(Post.hidden != 1).order_by(Post.date.desc())
+    #posts = Post.select().order_by(Post.date.desc())
     return object_list('show_posts.html', posts, 'posts', is_admin=('username' in session))
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -61,6 +62,8 @@ def authenticate():
 @app.route('/hide/<id>')
 def hide(id):
     app.logger.debug("getting to hide post id is %s" % id)
+    q = Post.update(hidden=True).where(Post.id == id)
+    q.execute()
     return redirect(url_for('show_posts_beta'))
 
 @app.route('/showtweet/<id>')
