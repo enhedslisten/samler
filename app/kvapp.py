@@ -62,8 +62,9 @@ def authenticate():
 @app.route('/hide/<id>')
 def hide(id):
     app.logger.debug("getting to hide post id is %s" % id)
-    q = Post.update(hidden=True).where(Post.id == id)
-    q.execute()
+    if ('username' in session):
+        q = Post.update(hidden=True).where(Post.id == id)
+        q.execute()
     return redirect(url_for('show_posts_beta'))
 
 @app.route('/showtweet/<id>')
