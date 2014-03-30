@@ -14,6 +14,7 @@ class Posts(Model):
     likes = IntegerField(null=True)
     orig_url = CharField(null=True)
     hidden = BooleanField(null=False)
+    promoted = BooleanField(null=False)
 
     def hasPost(self, id):
         return Posts.select().where(Posts.orig_post_id == id).count()

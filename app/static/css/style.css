@@ -45,6 +45,10 @@ font-size: 1.2em;
 .post-inner{ }
 .post-image, a .post-image{}
 
+.promoted {
+    border: 3px solid yellow;
+}
+
 .post-content {
     margin-top:-4px;
     padding:7px;

@@ -37,8 +37,9 @@ def confirm_password(username, password):
 @app.route('/')
 def show_posts_beta():
     posts = Post.select().where(Post.hidden != 1).order_by(Post.date.desc())
+    promoted = Post.select().where(Post.promoted == 1)
     #posts = Post.select().order_by(Post.date.desc())
-    return object_list('show_posts.html', posts, 'posts', is_admin=('username' in session))
+    return object_list('show_posts.html', posts, 'posts', is_admin=('username' in session), promoted=promoted)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -67,6 +68,22 @@ def hide(id):
         q.execute()
     return redirect(url_for('show_posts_beta'))
 
+@app.route('/promote/<id>')
+def promote(id):
+    app.logger.debug("getting to promote post, id is %s" % id)
+    if ('username' in session):
+        q = Post.update(promoted=True).where(Post.id == id)
+        q.execute()
+    return redirect(url_for('show_posts_beta'))
+
+@app.route('/demote/<id>')
+def demote(id):
+    app.logger.debug("getting to demote post, id is %s" % id)
+    if ('username' in session):
+        q = Post.update(promoted=False).where(Post.id == id)
+        q.execute()
+    return redirect(url_for('show_posts_beta'))
+    
 @app.route('/showtweet/<id>')
 def showtweet(id):
     resp = requests.get("https://api.twitter.com/1/statuses/oembed.json?id={0}&align=center".format(id))

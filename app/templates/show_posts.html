@@ -2,7 +2,12 @@
 {% block body %}
   <div id="posts">
   {% for post in posts %}
-  <div class="post post-{{ loop.index % 3 }}">
+  {% if post.promoted == 1 %}
+    {% set style = 'promoted' %}
+  {% else %}
+    {% set style = 'normal' %}
+  {% endif %}
+  <div class="post post-{{ loop.index % 3 }} {{ style }}">
   <div class="post-inner">
     <!--
       If it's an instagram post or a twitter post with picture, 
@@ -16,7 +21,12 @@
     {% endif %}
 
     {% if is_admin %}
-      <a class="hidePost" href="{{ url_for('hide', id=post.id) }}">Hide post</a>
+      <a class="hidePost" href="{{ url_for('hide', id=post.id) }}">Hide post</a> |
+      {% if post.promoted == 1 %} 
+      <a class="demotePost" href="{{ url_for('demote', id=post.id) }}">Demote post</a>
+      {% else %}
+      <a class="promotePost" href="{{ url_for('promote', id=post.id) }}">Promote post</a>
+      {% endif %}
     {% endif %}
     {% if iframeUrl and post.image_small %}
       <a class="iframe {{ post.service }}" href="{{ iframeUrl }}">
