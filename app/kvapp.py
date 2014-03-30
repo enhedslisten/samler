@@ -37,9 +37,8 @@ def confirm_password(username, password):
 @app.route('/')
 def show_posts_beta():
     posts = Post.select().where(Post.hidden != 1).order_by(Post.date.desc())
-    promoted = Post.select().where(Post.promoted == 1)
     #posts = Post.select().order_by(Post.date.desc())
-    return object_list('show_posts.html', posts, 'posts', is_admin=('username' in session), promoted=promoted)
+    return object_list('show_posts.html', posts, 'posts', is_admin=('username' in session))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
