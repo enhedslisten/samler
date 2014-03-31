@@ -71,6 +71,16 @@ font-size: 1.2em;
 #CTA-icons {float:right;margin: 33px 0 0 0 }
 #CTA-icons p {margin: 0;}
 #CTA p {font-size:13pt;font-family: 'Soho Gothic Italic', "Helvetica Neue", Helvetica, Arial, sans-serif;}
+#admin-toolbar {
+    background-color: #E13531;
+    margin-bottom: 5px;
+    text-align: right;
+    padding-right: 20px;
+}
+#admin-toolbar a {
+    color: #FFF;
+    text-decoration: none;
+}
 img {height:auto}
 
 h1 {color:#2e2e2e}
