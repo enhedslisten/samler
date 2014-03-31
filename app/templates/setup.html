@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1>Configure search terms:</h1>
+  <ul>
+    {% for term in search_terms %}
+    <li> {{ term }} </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

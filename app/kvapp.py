@@ -2,14 +2,14 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, make_response
 from models import Posts as Post
-import requests, json, datetime, ConfigParser, time
+import requests, json, datetime, ConfigParser, time, codecs
 
 # create our little application :)
 app = Flask(__name__)
 
 # Load default config and override config from an environment variable
 Config = ConfigParser.ConfigParser()
-Config.read('config.ini')
+Config.readfp(codecs.open('config.ini', 'r', 'utf8'))
     
 app.config.update(dict(
     DEBUG=True,
@@ -39,6 +39,14 @@ def show_posts_beta():
     posts = Post.select().where(Post.hidden != 1).order_by(Post.date.desc())
     #posts = Post.select().order_by(Post.date.desc())
     return object_list('show_posts.html', posts, 'posts', is_admin=('username' in session))
+
+@app.route('/setup')
+def setup():
+    if ('username' in session):
+        search_terms = Config.get('Search_Terms', 'search_terms').split(',')
+        return render_template('setup.html', search_terms=search_terms, is_admin=True)
+    else:
+      return redirect(url_for('show_posts_beta'))  
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -97,7 +105,6 @@ def instagram_updates():
         challenge = request.args.get('hub.challenge', '')
         app.logger.debug(challenge)
         return make_response(challenge)
-        
 
 @app.template_filter('dateformat')
 def datetimeformat(value, format='%d-%m-%Y %H:%M'):
