@@ -8,13 +8,13 @@
     {% endfor %}
   {% endif %}
 {% endwith %}
-  <form action="{{ url_for('authenticate') }}" method=post>
+  <form action="{{ url_for('authenticate') }}" method='post'>
     <dl>
-      <dt>Username:
+      <dt>Username:</dt>
       <dd><input type=text name=username>
-      <dt>Password:
-      <dd><input type=password name=password>
-      <dd><input type=submit value=Login>
+      <dt>Password:</dt>
+      <dd><input type=password name=password></dd>
+      <dd><input type=submit value=Login></dd>
     </dl>
   </form>
 {% endblock %}
