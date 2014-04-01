@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
-  <h1>Configure search terms:</h1>
-  <ul>
-    {% for term in search_terms %}
-    <li> {{ term }} </li>
-    {% endfor %}
-  </ul>
+    <h1>View search terms:</h1>
+      <p>Unfortunately, you can't edit the search terms from the interface. I tried, but unfortunately, it's not possible due to funny Danish characters.
+      Instead, ask Lars to log in to the server and edit them in the config file. You will need to restart the application to see the changes here, but the parsers should be able to pick them up automagically next time they run.</p>
+      <dl>
+        {% for term in search_terms %}
+          <dt>Term {{ loop.index }}</dt>
+          <dd>{{ term }}</dd>
+        {% endfor %}
+      </dl>
 {% endblock %}
