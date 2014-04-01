@@ -3,8 +3,8 @@ from requests_oauthlib import OAuth1
 #from sqlite3 import dbapi2 as sqlite3
 import json
 import logging
-import time 
-
+import time , codecs
+import ConfigParser
 from models import Posts
 
 logging.basicConfig(filename='fetcher.log',
@@ -13,11 +13,13 @@ logging.basicConfig(filename='fetcher.log',
 
 class Fetcher:
     def __init__(self):
-        key = ""
-        secret = ""
-        token = ""
-        token_secret = ""
+        Config = ConfigParser.ConfigParser()
+        Config.readfp(codecs.open('config.ini', 'r', 'utf8'))
 
+        key = Config.get('Twitter', 'key')
+        secret = Config.get('Twitter', 'secret')
+        token = Config.get('Twitter', 'token')
+        token_secret = Config.get('Twitter', 'token_secret')
         self.auth = OAuth1(key, secret, token, token_secret)
 
     def getTweetsJSON(self):

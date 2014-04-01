@@ -3,3 +3,15 @@ username: userpassword
 
 [Secrets]
 secret_key: yourverysecretpassword
+
+[Search_Terms]
+search_terms: rødtkbh,roedtkbh,zir,fælleskabfungerer
+
+[Twitter]
+key: some_key
+secret: some_secret
+token: some_token
+token_secret: some_token_secret
+
+[Instagram]
+token: some_token

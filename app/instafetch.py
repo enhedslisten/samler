@@ -10,6 +10,8 @@ from models import Posts
 import json
 import logging
 import time 
+import ConfigParser
+import codecs
 
 logging.basicConfig(filename='fetcher.log',
                     level=logging.INFO,
@@ -23,8 +25,12 @@ token = ''
 class Fetcher:
 
     def __init__(self):
+        
+        Config = ConfigParser.ConfigParser()
+        Config.readfp(codecs.open('config.ini', 'r', 'utf8'))
+        
+        self.token = Config.get('Instagram', 'token')
         self.hashtag = 'RødtKBH'
-        self.token = ''
 
 
     def getJSON(self):
