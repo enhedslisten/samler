@@ -19,22 +19,26 @@ logging.basicConfig(filename='fetcher.log',
 
 client_id = ''
 Client_secret = ''
-hashtag = 'RødtKBH'
+hashtag = ''
 token = ''
 
 class Fetcher:
 
+    search_terms = []
     def __init__(self):
         
         Config = ConfigParser.ConfigParser()
         Config.readfp(codecs.open('config.ini', 'r', 'utf8'))
         
         self.token = Config.get('Instagram', 'token')
-        self.hashtag = 'RødtKBH'
+        self.search_terms = Config.get('Search_Terms', 'search_terms').split(',')
 
 
-    def getJSON(self):
-        endpoint = 'https://api.instagram.com/v1/tags/{0}/media/recent?access_token={1}'.format(self.hashtag, self.token)
+    def getJSON(self, term):
+        endpoint = u'https://api.instagram.com/v1/tags/{0}/media/recent?access_token={1}'
+        endpoint = endpoint.format(term, self.token)
+        logging.info(endpoint)
+
         resp = requests.get(endpoint)
 
         if resp.status_code == 200:
@@ -45,8 +49,8 @@ class Fetcher:
             return None
 
             
-    def saveMedia(self):
-        media_json = self.getJSON()
+    def saveMedia(self, term):
+        media_json = self.getJSON(term)
 
         if not media_json:
             logging.info("Saved 0 media")
@@ -71,4 +75,5 @@ class Fetcher:
 
 if __name__ == "__main__":
     f = Fetcher()
-    f.saveMedia()
+    for term in f.search_terms:
+        f.saveMedia(term)
