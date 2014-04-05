@@ -1,9 +1,10 @@
+
 import requests
 from requests_oauthlib import OAuth1
 #from sqlite3 import dbapi2 as sqlite3
 import json
 import logging
-import time , codecs
+import time , codecs, urllib
 import ConfigParser
 from models import Posts
 
@@ -11,7 +12,11 @@ logging.basicConfig(filename='fetcher.log',
                     level=logging.INFO,
                     format='%(asctime)s - %(levelname)s: %(message)s')
 
+
 class Fetcher:
+
+    search_terms = []
+
     def __init__(self):
         Config = ConfigParser.ConfigParser()
         Config.readfp(codecs.open('config.ini', 'r', 'utf8'))
@@ -20,15 +25,18 @@ class Fetcher:
         secret = Config.get('Twitter', 'secret')
         token = Config.get('Twitter', 'token')
         token_secret = Config.get('Twitter', 'token_secret')
+        self.search_terms = Config.get('Search_Terms', 'search_terms').split(',')
         self.auth = OAuth1(key, secret, token, token_secret)
 
-    def getTweetsJSON(self):
-        since = ''
+    def getTweetsJSON(self, term):
+        # Aslak had commented this out - not sure what it was supposed to do
+        #since = ''
         #lastTweetID = self.getHighID()
         #if lastTweetID:
         #    since = '&since_id={0}'.format(lastTweetID)
 
-        search_url =  'https://api.twitter.com/1.1/search/tweets.json?q=%23r%C3%B8dtkbh&result_type=recent&count=100{0}'.format(since)
+        search_url =  u'https://api.twitter.com/1.1/search/tweets.json?q={0}&result_type=recent&count=100'
+        search_url = search_url.format(term)
         resp = requests.get(search_url, auth=self.auth)
         if resp.status_code == 200:
             logging.info("yay, 200 response")
@@ -46,9 +54,9 @@ class Fetcher:
         pass 
 
 
-    def saveTweets(self):
-        tweets = self.getTweetsJSON()
-        
+    def saveTweets(self, term):
+        tweets = self.getTweetsJSON(term)
+        return
         if not tweets:
             logging.info("Saved 0 tweets")
             return 0
@@ -79,4 +87,6 @@ class Fetcher:
 
 if __name__ == "__main__":
     f = Fetcher()
-    f.saveTweets()
+    for term in f.search_terms:
+        f.saveTweets(term)
+
