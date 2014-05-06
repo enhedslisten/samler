@@ -19,6 +19,14 @@ app.config.update(dict(
 ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
+def is_number(str):
+    try:
+        int(str)
+    except ValueError:
+        return False
+    
+    return True
+
 def object_list(template_name, qr, var_name='object_list', **kwargs):
     kwargs.update(
         page=int(request.args.get('page', 1)),
@@ -34,11 +42,20 @@ def confirm_password(username, password):
     except:
         return False
 
-@app.route('/')
-def show_posts_beta():
+def get_selected_post(id):
+    if id and is_number(id): 
+        q = Post.select().where(Post.id == int(id))
+        selected_post = [u for u in q][0]
+    else: 
+        selected_post = None 
+    return selected_post
+
+@app.route('/', defaults={'id' : None})
+@app.route('/<id>')
+def show_posts_beta(id):
     posts = Post.select().where(Post.hidden != 1).order_by(Post.date.desc())
-    #posts = Post.select().order_by(Post.date.desc())
-    return object_list('show_posts.html', posts, 'posts', is_admin=('username' in session))
+    selected_post = get_selected_post(id)
+    return object_list('show_posts.html', posts, 'posts', is_admin=('username' in session), selected_post=selected_post)
 
 @app.route('/setup')
 def setup():
@@ -56,6 +73,7 @@ def login():
 def logout():
     session.pop('username', None)
     return redirect(url_for('show_posts_beta'))
+
 
 @app.route('/authenticate', methods=['POST'])
 def authenticate():

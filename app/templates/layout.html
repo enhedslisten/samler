@@ -9,7 +9,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
-
+  <!-- for Facebook -->          
+   <meta property="og:site_name" content="Fælleskab Fungerer" />
+   <meta property="og:url" content="{{ request.url }}" />
+  {% if selected_post %}
+   <meta property="og:title" content="{{ selected_post.username}} siger at Fælleskab Fungerer" />
+    <meta property="og:type" content="article" />
+    {% if selected_post.image_full %}
+    <meta property="og:image" content="{{ selected_post.image_full }}" />
+    {% endif %}
+    <meta property="og:description" content="{{ selected_post.text}}" />
+  {% endif %}
 
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
